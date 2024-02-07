@@ -45,7 +45,7 @@ def generate_dir_documentation(code, model="gpt-4-turbo-preview"):
 			},
 			{
 				"role": "system",
-				"content": "Write the documentation for the directory"
+				"content": "Write the documentation for the directory. Make sure to include the each major class and function."
 			},
 		]
 	)
