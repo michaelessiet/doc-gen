@@ -1,6 +1,10 @@
 from openai import OpenAI
 import os
 
+if not os.getenv("OPENAI_API_KEY"):
+	print("OpenAI API key not found, please set the OPENAI_API_KEY environment variable")
+	exit(1)
+
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
 )
