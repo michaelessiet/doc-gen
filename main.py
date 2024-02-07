@@ -14,10 +14,9 @@ def main(argv):
 		if opt in ("-d", "--dir"):
 			dir = arg
 		elif opt == "-h":
-			print("""Usage: main.py [option] [argument]
-				Options:
-					-d --dir <file or directory> : Document a directory or file
-				Note: Only one option can be used at a time
+			print(f"""Usage: doc-gen [option] [argument]
+Options:
+  -d --dir <file or directory> : Document a directory or file
 				""")
 			sys.exit()
 
