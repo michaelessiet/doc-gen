@@ -59,6 +59,14 @@ python main.py -d /path/to/your_directory
 
 This will scan the input directory, compile the Python files it contains into a single string, and generate a `README.md` file in the same directory with the documentation for the entire directory.
 
+#### Build to single binary
+
+```bash
+./scripts/build.sh
+```
+
+This will create a single binary file named `main.bin`.
+
 ## Contributing
 
 Contributions to this project are welcome. Please refer to the latter sections of `README.md` for guidelines on contributing, reporting issues, and submitting pull requests.
