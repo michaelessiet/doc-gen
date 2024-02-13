@@ -28,6 +28,7 @@ def generate_code_documentation(code, model="gpt-4-turbo-preview"):
 				}
 			],
 		)
+		print("Documentation generated!")
 		return response.choices[0].message.content
 
 def generate_dir_documentation(code, model="gpt-4-turbo-preview"):

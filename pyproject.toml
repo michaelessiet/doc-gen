@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.12"
 requests = "^2.31.0"
 openai = "^1.11.1"
+click = "^8.1.7"
 
 
 [build-system]
