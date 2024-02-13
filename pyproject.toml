@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "doc-gen"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["michaelessiet <emsaa2002@gmail.com>"]
 readme = "README.md"
