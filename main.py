@@ -3,22 +3,21 @@ from doc_gen.file_reader import compile_files_in_dir_into_string, read_file,writ
 from doc_gen.generator import generate_code_documentation,generate_dir_documentation
 
 def main(argv):
-	opts, args = getopt.getopt(argv, "hd:", ["dir="])
-	dir = ""
+	opts, args = getopt.getopt(argv, "h")
 
-	if len(opts) == 0:
-		print("No options provided")
+	if "-h" in opts or len(args) == 0:
+		print(f"""Usage: doc-gen [directory]""")
+		sys.exit()
+
+	if len(args) == 0:
+		print("No directory provided")
 		sys.exit(2)
 
-	for opt, arg in opts:
-		if opt in ("-d", "--dir"):
-			dir = arg
-		elif opt == "-h":
-			print(f"""Usage: doc-gen [option] [argument]
-Options:
-  -d --dir <file or directory> : Document a directory or file
-				""")
-			sys.exit()
+	if len(args) > 1:
+		print("Too many arguments")
+		sys.exit(2)
+
+	dir = args[0]
 
 	try:
 		if os.path.isfile(dir):

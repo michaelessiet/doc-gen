@@ -1,7 +1,11 @@
 import os
 
+excluded_dirs = [".git", ".idea", "__pycache__", "node_modules", ".vscode", "venv", "env", "build", "dist", "target", "out", "output", "bin", "obj"]
+
 def read_directory(directory):
 	files = os.listdir(directory)
+	# exlude dirs
+	files = [file for file in files if file not in excluded_dirs]
 	return files
 
 def read_file(file):
