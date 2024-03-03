@@ -1,7 +1,7 @@
 name: Close PRs with tea.yaml changes
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, synchronize]
 
 jobs:
@@ -29,6 +29,8 @@ jobs:
 
       - name: Close PR if tea.yaml is changed
         if: steps.check_for_tea.outputs.detected == 'true'
-        uses: superbrothers/close-pull-request@v3
+        uses: peter-evans/close-pull@v3
         with:
+          pull-request-number: ${{ github.event.pull_request.number }}
           comment: "This pull request has been automatically closed because it contains changes to `tea.yaml`, which is not allowed. Please contact the repository administrator for more information."
+          delete-branch: true
