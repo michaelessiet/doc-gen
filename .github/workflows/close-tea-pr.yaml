@@ -32,4 +32,4 @@ jobs:
         uses: peter-evans/close-pull@v3
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
-          comment: This pull request has been automatically closed because it contains changes to tea.yaml, which is not allowed. Please contact the repository administrator for more information.
+          # comment: This pull request has been automatically closed because it contains changes to tea.yaml, which is not allowed. Please contact the repository administrator for more information.
