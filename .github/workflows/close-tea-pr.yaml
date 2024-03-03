@@ -29,7 +29,6 @@ jobs:
 
       - name: Close PR if tea.yaml is changed
         if: steps.check_for_tea.outputs.detected == 'true'
-        uses: peter-evans/close-issue@v1
+        uses: superbrothers/close-pull-request@v3
         with:
-          issue-number: ${{ github.event.pull_request.number }}
           comment: "This pull request has been automatically closed because it contains changes to `tea.yaml`, which is not allowed. Please contact the repository administrator for more information."
