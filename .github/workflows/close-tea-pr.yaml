@@ -20,7 +20,7 @@ jobs:
       - name: Check for tea.yaml
         id: check_for_tea
         run: |
-          echo "changed files: ${{ steps.files.outputs.all }}"
+          echo "Changed files: ${{ steps.files.outputs.all }}"
           if echo "${{ steps.files.outputs.all }}" | grep -q "tea.yaml"; then
             echo "::set-output name=detected::true"
           else
@@ -29,6 +29,7 @@ jobs:
 
       - name: Close PR if tea.yaml is changed
         if: steps.check_for_tea.outputs.detected == 'true'
-        run: gh pr close --comment "This pull request has been automatically closed because it contains changes to `tea file`, which is not allowed. Please contact the repository administrator for more information." --delete-branch "${{ github.event.pull_request.number }}"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/close-pull@v3
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          comment: This pull request has been automatically closed because it contains changes to tea.yaml, which is not allowed. Please contact the repository administrator for more information.
