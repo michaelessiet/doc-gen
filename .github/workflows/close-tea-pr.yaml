@@ -1,0 +1,35 @@
+name: Close PRs with tea.yaml changes
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  close-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Necessary to fetch all history for all branches and tags
+
+      - name: Get list of changed files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: Check for tea.yaml
+        id: check_for_tea
+        run: |
+          echo "Changed files: ${{ steps.files.outputs.all }}"
+          if echo "${{ steps.files.outputs.all }}" | grep -q "tea.yaml"; then
+            echo "::set-output name=detected::true"
+          else
+            echo "::set-output name=detected::false"
+          fi
+
+      - name: Close PR if tea.yaml is changed
+        if: steps.check_for_tea.outputs.detected == 'true'
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment: "This pull request has been automatically closed because it contains changes to `tea.yaml`, which is not allowed. Please contact the repository administrator for more information."
