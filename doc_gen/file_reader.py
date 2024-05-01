@@ -1,6 +1,6 @@
 import os
 
-excluded_dirs = [".git", ".idea", "__pycache__", "node_modules", ".vscode", "venv", "env", "build", "dist", "target", "out", "output", "bin", "obj", ".output"]
+excluded_dirs = [".git", ".idea", "__pycache__", "node_modules", ".vscode", "venv", "env", "build", "dist", "target", "out", "output", "bin", "obj", ".output", ".nuxt", ".vercel"]
 
 def read_directory(directory:str):
 	files = os.listdir(directory)
